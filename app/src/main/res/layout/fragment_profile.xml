@@ -1,113 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#0F0F13">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/app_bar_layout"
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        app:elevation="0dp">
+        android:layout_height="match_parent"
+        android:background="#0F0F13">
 
-        <com.google.android.material.appbar.CollapsingToolbarLayout
-            android:layout_width="match_parent"
-            android:layout_height="320dp"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <!-- Bannière avec effet assombri -->
-                <ImageView
-                    android:id="@+id/ivCover"
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:scaleType="centerCrop"
-                    android:background="#1A1A1E"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:background="#88000000"
-                    app:layout_constraintTop_toTopOf="parent"/>
-
-                <!-- Avatar central (style Kitsu) -->
-                <com.google.android.material.imageview.ShapeableImageView
-                    android:id="@+id/ivAvatar"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_marginTop="150dp"
-                    android:padding="4dp"
-                    app:strokeColor="#FF5252"
-                    app:strokeWidth="3dp"
-                    app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <!-- Pseudo -->
-                <TextView
-                    android:id="@+id/tvUsername"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="Profil Kitsu"
-                    android:textColor="@android:color/white"
-                    android:textSize="22sp"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/ivAvatar" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                app:layout_collapseMode="pin" />
-
-        </com.google.android.material.appbar.CollapsingToolbarLayout>
-
-        <!-- Bouton d'édition (rouge) -->
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnEditProfile"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="24dp"
-            android:layout_marginTop="8dp"
-            android:text="Modifier le profil"
-            android:textColor="@android:color/white"
-            app:backgroundTint="#FF5252"
-            app:cornerRadius="12dp" />
-
-        <!-- Onglets (Tabs) -->
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tabLayout"
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/app_bar_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
-            app:tabIndicatorColor="#FF5252"
-            app:tabSelectedTextColor="#FF5252"
-            app:tabTextColor="#A0A0A5" />
+            app:elevation="0dp">
 
-    </com.google.android.material.appbar.AppBarLayout>
+            <!-- Ajout de l'ID collapsingToolbar requis par Kotlin -->
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:id="@+id/collapsingToolbar"
+                android:layout_width="match_parent"
+                android:layout_height="320dp"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
-    <!-- Zone du ViewPager (qui affiche les listes en dessous) -->
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/viewPager"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-    <!-- Boutons cachés nécessaires au code Kotlin -->
-    <View android:id="@+id/btnLogin" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
-    <View android:id="@+id/nsvNotLoggedIn" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" />
+                    <ImageView android:background="#1A1A1E" android:id="@+id/ivCover" android:layout_height="200dp" android:layout_width="match_parent" android:scaleType="centerCrop" app:layout_constraintTop_toTopOf="parent"/>
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+                    <View android:background="#88000000" android:layout_height="200dp" android:layout_width="match_parent" app:layout_constraintTop_toTopOf="parent"/>
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/ivAvatar"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_marginTop="150dp"
+                        android:padding="4dp"
+                        app:strokeColor="#FF5252"
+                        app:strokeWidth="3dp"
+                        app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView android:id="@+id/tvUsername" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:layout_width="wrap_content" android:text="Profil Kitsu" android:textColor="@android:color/white" android:textSize="22sp" android:textStyle="bold" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@id/ivAvatar"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    app:layout_collapseMode="pin" />
+
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnEditProfile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="8dp"
+                android:text="Modifier le profil"
+                android:textColor="@android:color/white"
+                app:backgroundTint="#FF5252"
+                app:cornerRadius="12dp" />
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tabLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                app:tabIndicatorColor="#FF5252"
+                app:tabSelectedTextColor="#FF5252"
+                app:tabTextColor="#A0A0A5" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+        <!-- Éléments invisibles requis par le code Kotlin pour éviter les crashs -->
+        <View android:id="@+id/btnLogin" android:layout_height="0dp" android:layout_width="0dp" android:visibility="gone"/>
+        <View android:id="@+id/nsvNotLoggedIn" android:layout_height="0dp" android:layout_width="0dp" android:visibility="gone"/>
+        <View android:id="@+id/title" android:layout_height="0dp" android:layout_width="0dp" android:visibility="gone"/>
+        <View android:id="@+id/subtitle" android:layout_height="0dp" android:layout_width="0dp" android:visibility="gone"/>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>
